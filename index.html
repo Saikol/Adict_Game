@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdictGame - Videojuegos Independientes desde Santa Cruz, Bolivia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00d4ff;
+            --secondary: #ff2a6d;
+            --dark: #0a0a1a;
+            --light: #f8f9fa;
+            --accent: #ffd700;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--dark) 0%, #1a1a2e 100%);
+            color: var(--light);
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem 3rem;
+            background: rgba(10, 10, 26, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            color: white;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 30px rgba(0, 212, 255, 0.5); }
+            50% { box-shadow: 0 0 50px rgba(0, 212, 255, 0.8); }
+            100% { box-shadow: 0 0 30px rgba(0, 212, 255, 0.5); }
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .location {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .game-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .game-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.3);
+            border-color: var(--primary);
+        }
+
+        .card-header {
+            position: relative;
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .app-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            border-radius: 20px;
+            border: 4px solid white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 2;
+        }
+
+        .preview-images {
+            display: flex;
+            height: 100%;
+        }
+
+        .preview-img {
+            flex: 1;
+            object-fit: cover;
+            filter: brightness(0.7);
+            transition: all 0.3s ease;
+        }
+
+        .preview-img:hover {
+            filter: brightness(1);
+            transform: scale(1.05);
+        }
+
+        .card-body {
+            padding: 2.5rem 1.5rem 1.5rem;
+            text-align: center;
+        }
+
+        .game-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .game-description {
+            font-size: 0.95rem;
+            color: #ccc;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .btn-playstore {
+            background: linear-gradient(45deg, #34a853, #0f9d58);
+            color: white;
+        }
+
+        .btn-playstore:hover {
+            background: linear-gradient(45deg, #4285f4, #34a853);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(52, 168, 83, 0.4);
+        }
+
+        .btn-privacy {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+            border: 1px solid var(--primary);
+        }
+
+        .btn-privacy:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.4);
+        }
+
+        .btn i {
+            font-size: 1.1rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 2rem;
+            margin-top: 4rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--primary);
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .logo {
+                width: 90px;
+                height: 90px;
+                font-size: 2rem;
+            }
+            
+            .games-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">AG</div>
+        <h1>AdictGame</h1>
+        <p class="subtitle">Videojuegos Independientes</p>
+        <div class="location">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Santa Cruz de la Sierra, Bolivia</span>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="games-grid">
+            <!-- JUEGO 1 -->
+            <div class="game-card">
+                <div class="card-header">
+                    <img src="https://play-lh.googleusercontent.com/IeNJkcmJBz7S7i1dPw0yF6uLIXKDkK4d1JtJ8yZ8T2sBR2M5x5eF4zV8eF4zV8eF4zV" alt="Icono App 1" class="app-icon">
+                    <div class="preview-images">
+                        <img src="https://play-lh.googleusercontent.com/8ddL1kuoNUB5vUvgDVjYY3Q6v0sKzmf1J4K2d8z8Kz8d8z8Kz8d8z8Kz8d8z8Kz8d8z" alt="Preview 1" class="preview-img">
+                        <img src="https://play-lh.googleusercontent.com/9eeL2mvoNUB5vUvgDVjYY3Q6v0sKzmf1J4K2d8z8Kz8d8z8Kz8d8z8Kz8d8z8Kz8d8z" alt="Preview 2" class="preview-img">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="game-title">Space Runner</h3>
+                    <p class="game-description">¡Corre a través del espacio infinito! Evita asteroides, recoge power-ups y alcanza la velocidad máxima en este adictivo juego de reflejos.</p>
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-playstore">
+                            <i class="fab fa-google-play"></i> Play Store
+                        </a>
+                        <a href="#" class="btn btn-privacy">
+                            <i class="fas fa-shield-alt"></i> Privacidad
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- JUEGO 2 -->
+            <div class="game-card">
+                <div class="card-header">
+                    <img src="https://play-lh.googleusercontent.com/7AkA0z8Kz8d8z8Kz8d8z8Kz8d8z8Kz8d8z8Kz8d8z8Kz8d8z8Kz8d8z8Kz8d8z8Kz8d" alt="Icono App 2" class="app-icon">
+                    <div class="preview-images">
+                        <img src="https://play-lh.googleusercontent.com/6bbL3nwpOVC6wXwhEYY4R7r1K5L3n8p1K5L3n8p1K5L3n8p1K5L3n8p1K5L3n8p1K5L3n" alt="Preview 1" class="preview-img">
+                        <img src="https://play-lh.googleusercontent.com/7ccL4o xqPVD7xYyiFZZ5S8s2L6M4o9q2L6M4o9q2L6M4o9q2L6M4o9q2L6M4o9q2L6M4o" alt="Preview 2" class="preview-img">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="game-title">Puzzle Quest</h3>
+                    <p class="game-description">Desafía tu mente con cientos de rompecabezas únicos. Combina piezas, desbloquea niveles y conviértete en el maestro del puzzle.</p>
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-playstore">
+                            <i class="fab fa-google-play"></i> Play Store
+                        </a>
+                        <a href="#" class="btn btn-privacy">
+                            <i class="fas fa-shield-alt"></i> Privacidad
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- JUEGO 3 -->
+            <div class="game-card">
+                <div class="card-header">
+                    <img src="https://play-lh.googleusercontent.com/5DdM5pqrSTU8yZzjJKK6M7n3O9p1Q3R5t7V9x1Z3b5D7f9H1j3L5n7P9r1T3v5X7z" alt="Icono App 3" class="app-icon">
+                    <div class="preview-images">
+                        <img src="https://play-lh.googleusercontent.com/4EeN6qrsUV9zAakKLL8N8oq2S4U6w8Y0A2cE4g6I8k0M2o4Q6s8U0w2Y4a6C8e0G" alt="Preview 1" class="preview-img">
+                        <img src="https://play-lh.googleusercontent.com/3FfO7rtsVW0aBblLMM9O9pr3T5V7x9Z1B3dF5h7J9l1N3p5R7t9V1x3Z5b7D9f1H" alt="Preview 2" class="preview-img">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="game-title">Ninja Shadow</h3>
+                    <p class="game-description">Conviértete en un ninja sigiloso. Salta entre sombras, elimina enemigos y completa misiones en este juego de acción y estrategia.</p>
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-playstore">
+                            <i class="fab fa-google-play"></i> Play Store
+                        </a>
+                        <a href="#" class="btn btn-privacy">
+                            <i class="fas fa-shield-alt"></i> Privacidad
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- JUEGO 4 -->
+            <div class="game-card">
+                <div class="card-header">
+                    <img src="https://play-lh.googleusercontent.com/2GgP8stuWXB9zBbmMNN0P0s4U6W8y0A2cE4g6I8k0M2o4Q6s8U0w2Y4a6C8e0G2i" alt="Icono App 4" class="app-icon">
+                    <div class="preview-images">
+                        <img src="https://play-lh.googleusercontent.com/1HhQ9tuvXYC0aCcnNOO1Q1t5V7X9z1B3dF5h7J9l1N3p5R7t9V1x3Z5b7D9f1H3j" alt="Preview 1" class="preview-img">
+                        <img src="https://play-lh.googleusercontent.com/0IiR0uuwZYD1bDdoOPP2R2u6W8Y0a2C4e6G8i0K2m4O6q8S0u2w4Y6c8E0g2I4k" alt="Preview 2" class="preview-img">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="game-title">Racing Fury</h3>
+                    <p class="game-description">¡Acelera al límite! Compite en circuitos extremos, personaliza tu auto y domina las pistas en este juego de carreras lleno de adrenalina.</p>
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-playstore">
+                            <i class="fab fa-google-play"></i> Play Store
+                        </a>
+                        <a href="#" class="btn btn-privacy">
+                            <i class="fas fa-shield-alt"></i> Privacidad
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- JUEGO 5 -->
+            <div class="game-card">
+                <div class="card-header">
+                    <img src="https://play-lh.googleusercontent.com/9JjT1vvxAZE2cEepQPP3S3v7X9Z1b3D5f7H9j1L3n5P7r9T1v3X5z7B9d1F3h5J" alt="Icono App 5" class="app-icon">
+                    <div class="preview-images">
+                        <img src="https://play-lh.googleusercontent.com/8KkU2wwyBZF3dFfrRSS4T4w8Y0a2C4e6G8i0K2m4O6q8S0u2w4Y6c8E0g2I4k6M" alt="Preview 1" class="preview-img">
+                        <img src="https://play-lh.googleusercontent.com/7LlV3xxyCAG4eGgsTTU5U5x9Z1b3D5f7H9j1L3n5P7r9T1v3X5z7B9d1F3h5J7l" alt="Preview 2" class="preview-img">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="game-title">Fantasy Kingdom</h3>
+                    <p class="game-description">Construye tu reino, entrena héroes y conquista tierras mágicas en este épico juego de estrategia y aventura fantástica.</p>
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-playstore">
+                            <i class="fab fa-google-play"></i> Play Store
+                        </a>
+                        <a href="#" class="btn btn-privacy">
+                            <i class="fas fa-shield-alt"></i> Privacidad
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 AdictGame. Todos los derechos reservados.</p>
+        <div class="footer-links">
+            <a href="mailto:contacto@adictgame.com">contacto@adictgame.com</a>
+            <a href="#">Términos de Uso</a>
+            <a href="#">Sobre Nosotros</a>
+        </div>
+    </footer>
+</body>
+</html>
