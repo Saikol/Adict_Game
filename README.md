@@ -1,2 +1,2 @@
-# Adict_Game_
+# Adict_Game
 Page for contact and information 
