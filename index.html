@@ -37,25 +37,44 @@
         }
 
         .logo {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            width: 130px;
+            height: 130px;
+            background: transparent;
             border-radius: 50%;
             margin: 0 auto 1.5rem;
+            padding: 5px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.5rem;
-            color: white;
             box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
             animation: pulse 2s infinite;
+            border: 3px solid transparent;
+            background-clip: padding-box;
+        }
+
+        .company-logo {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: contain;
+            background-color: #0a0a1a;
+            padding: 10px;
+            transition: all 0.3s ease;
         }
 
         @keyframes pulse {
-            0% { box-shadow: 0 0 30px rgba(0, 212, 255, 0.5); }
-            50% { box-shadow: 0 0 50px rgba(0, 212, 255, 0.8); }
-            100% { box-shadow: 0 0 30px rgba(0, 212, 255, 0.5); }
+            0% { 
+                box-shadow: 0 0 30px rgba(0, 212, 255, 0.5), 0 0 0 0 rgba(0, 212, 255, 0.7);
+                border-color: rgba(0, 212, 255, 0.3);
+            }
+            50% { 
+                box-shadow: 0 0 50px rgba(0, 212, 255, 0.8), 0 0 0 10px rgba(0, 212, 255, 0);
+                border-color: rgba(0, 212, 255, 0.8);
+            }
+            100% { 
+                box-shadow: 0 0 30px rgba(0, 212, 255, 0.5), 0 0 0 0 rgba(0, 212, 255, 0);
+                border-color: rgba(0, 212, 255, 0.3);
+            }
         }
 
         h1 {
@@ -81,6 +100,44 @@
             gap: 0.5rem;
             color: var(--accent);
             font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        /* NUEVA SECCIÓN: Redes Sociales */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.2rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+            text-decoration: none;
+            border-radius: 50px;
+            border: 1.5px solid rgba(0, 212, 255, 0.3);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-btn:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.4);
+            border-color: var(--primary);
+        }
+
+        .social-btn i {
+            font-size: 1.2rem;
         }
 
         .container {
@@ -242,9 +299,17 @@
             }
             
             .logo {
-                width: 90px;
-                height: 90px;
-                font-size: 2rem;
+                width: 100px;
+                height: 100px;
+            }
+            
+            .social-links {
+                gap: 1rem;
+            }
+            
+            .social-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
             }
             
             .games-grid {
@@ -256,12 +321,29 @@
 </head>
 <body>
     <header>
-        <div class="logo">AG</div>
+        <div class="logo">
+            <img src="Logo.png" alt="Logo AdictGame" class="company-logo">
+        </div>
         <h1>AdictGame</h1>
         <p class="subtitle">Videojuegos Independientes</p>
         <div class="location">
             <i class="fas fa-map-marker-alt"></i>
             <span>Santa Cruz de la Sierra, Bolivia</span>
+        </div>
+        <!-- NUEVAS REDES SOCIALES -->
+        <div class="social-links">
+            <a href="#" class="social-btn" title="Facebook">
+                <i class="fab fa-facebook-f"></i>
+                <span>Facebook</span>
+            </a>
+            <a href="#" class="social-btn" title="TikTok">
+                <i class="fab fa-tiktok"></i>
+                <span>TikTok</span>
+            </a>
+            <a href="mailto:contacto@adictgame.com" class="social-btn" title="Email">
+                <i class="fas fa-envelope"></i>
+                <span>Contacto</span>
+            </a>
         </div>
     </header>
 
@@ -270,10 +352,10 @@
             <!-- JUEGO 1 -->
             <div class="game-card">
                 <div class="card-header">
-                    <img src="https://play-lh.googleusercontent.com/IeNJkcmJBz7S7i1dPw0yF6uLIXKDkK4d1JtJ8yZ8T2sBR2M5x5eF4zV8eF4zV8eF4zV" alt="Icono App 1" class="app-icon">
+                    <img src="https://via.placeholder.com/512x512/ff6b6b/ffffff?text=🚀" alt="Icono Space Runner" class="app-icon">
                     <div class="preview-images">
-                        <img src="https://play-lh.googleusercontent.com/8ddL1kuoNUB5vUvgDVjYY3Q6v0sKzmf1J4K2d8z8Kz8d8z8Kz8d8z8Kz8d8z8Kz8d8z" alt="Preview 1" class="preview-img">
-                        <img src="https://play-lh.googleusercontent.com/9eeL2mvoNUB5vUvgDVjYY3Q6v0sKzmf1J4K2d8z8Kz8d8z8Kz8d8z8Kz8d8z8Kz8d8z" alt="Preview 2" class="preview-img">
+                        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400&h=180&fit=crop" alt="Preview 1" class="preview-img">
+                        <img src="https://images.unsplash.com/photo-1558618043-ebb9a3e1b331?w=400&h=180&fit=crop" alt="Preview 2" class="preview-img">
                     </div>
                 </div>
                 <div class="card-body">
@@ -293,10 +375,10 @@
             <!-- JUEGO 2 -->
             <div class="game-card">
                 <div class="card-header">
-                    <img src="https://play-lh.googleusercontent.com/7AkA0z8Kz8d8z8Kz8d8z8Kz8d8z8Kz8d8z8Kz8d8z8Kz8d8z8Kz8d8z8Kz8d8z8Kz8d" alt="Icono App 2" class="app-icon">
+                    <img src="https://via.placeholder.com/512x512/4ecdc4/ffffff?text=🧩" alt="Icono Puzzle Quest" class="app-icon">
                     <div class="preview-images">
-                        <img src="https://play-lh.googleusercontent.com/6bbL3nwpOVC6wXwhEYY4R7r1K5L3n8p1K5L3n8p1K5L3n8p1K5L3n8p1K5L3n8p1K5L3n" alt="Preview 1" class="preview-img">
-                        <img src="https://play-lh.googleusercontent.com/7ccL4o xqPVD7xYyiFZZ5S8s2L6M4o9q2L6M4o9q2L6M4o9q2L6M4o9q2L6M4o9q2L6M4o" alt="Preview 2" class="preview-img">
+                        <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=400&h=180&fit=crop" alt="Preview 1" class="preview-img">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd84?w=400&h=180&fit=crop" alt="Preview 2" class="preview-img">
                     </div>
                 </div>
                 <div class="card-body">
@@ -316,10 +398,10 @@
             <!-- JUEGO 3 -->
             <div class="game-card">
                 <div class="card-header">
-                    <img src="https://play-lh.googleusercontent.com/5DdM5pqrSTU8yZzjJKK6M7n3O9p1Q3R5t7V9x1Z3b5D7f9H1j3L5n7P9r1T3v5X7z" alt="Icono App 3" class="app-icon">
+                    <img src="https://via.placeholder.com/512x512/f39c12/ffffff?text=🥷" alt="Icono Ninja Shadow" class="app-icon">
                     <div class="preview-images">
-                        <img src="https://play-lh.googleusercontent.com/4EeN6qrsUV9zAakKLL8N8oq2S4U6w8Y0A2cE4g6I8k0M2o4Q6s8U0w2Y4a6C8e0G" alt="Preview 1" class="preview-img">
-                        <img src="https://play-lh.googleusercontent.com/3FfO7rtsVW0aBblLMM9O9pr3T5V7x9Z1B3dF5h7J9l1N3p5R7t9V1x3Z5b7D9f1H" alt="Preview 2" class="preview-img">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=180&fit=crop" alt="Preview 1" class="preview-img">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=180&fit=crop" alt="Preview 2" class="preview-img">
                     </div>
                 </div>
                 <div class="card-body">
@@ -339,10 +421,10 @@
             <!-- JUEGO 4 -->
             <div class="game-card">
                 <div class="card-header">
-                    <img src="https://play-lh.googleusercontent.com/2GgP8stuWXB9zBbmMNN0P0s4U6W8y0A2cE4g6I8k0M2o4Q6s8U0w2Y4a6C8e0G2i" alt="Icono App 4" class="app-icon">
+                    <img src="https://via.placeholder.com/512x512/e74c3c/ffffff?text=🏎️" alt="Icono Racing Fury" class="app-icon">
                     <div class="preview-images">
-                        <img src="https://play-lh.googleusercontent.com/1HhQ9tuvXYC0aCcnNOO1Q1t5V7X9z1B3dF5h7J9l1N3p5R7t9V1x3Z5b7D9f1H3j" alt="Preview 1" class="preview-img">
-                        <img src="https://play-lh.googleusercontent.com/0IiR0uuwZYD1bDdoOPP2R2u6W8Y0a2C4e6G8i0K2m4O6q8S0u2w4Y6c8E0g2I4k" alt="Preview 2" class="preview-img">
+                        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=400&h=180&fit=crop" alt="Preview 1" class="preview-img">
+                        <img src="https://images.unsplash.com/photo-1558618046-fcd25c85cd84?w=400&h=180&fit=crop" alt="Preview 2" class="preview-img">
                     </div>
                 </div>
                 <div class="card-body">
@@ -362,10 +444,10 @@
             <!-- JUEGO 5 -->
             <div class="game-card">
                 <div class="card-header">
-                    <img src="https://play-lh.googleusercontent.com/9JjT1vvxAZE2cEepQPP3S3v7X9Z1b3D5f7H9j1L3n5P7r9T1v3X5z7B9d1F3h5J" alt="Icono App 5" class="app-icon">
+                    <img src="https://via.placeholder.com/512x512/9b59b6/ffffff?text=👑" alt="Icono Fantasy Kingdom" class="app-icon">
                     <div class="preview-images">
-                        <img src="https://play-lh.googleusercontent.com/8KkU2wwyBZF3dFfrRSS4T4w8Y0a2C4e6G8i0K2m4O6q8S0u2w4Y6c8E0g2I4k6M" alt="Preview 1" class="preview-img">
-                        <img src="https://play-lh.googleusercontent.com/7LlV3xxyCAG4eGgsTTU5U5x9Z1b3D5f7H9j1L3n5P7r9T1v3X5z7B9d1F3h5J7l" alt="Preview 2" class="preview-img">
+                        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=180&fit=crop" alt="Preview 1" class="preview-img">
+                        <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=400&h=180&fit=crop" alt="Preview 2" class="preview-img">
                     </div>
                 </div>
                 <div class="card-body">
